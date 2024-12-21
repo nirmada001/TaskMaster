@@ -1,0 +1,130 @@
+.task-list-container {
+  padding: 20px;
+  max-width: 900px;
+  margin: auto;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.task-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.create-task-link {
+  display: flex;
+  align-items: center;
+  color: #007bff;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.create-task-icon {
+  margin-right: 5px;
+  font-size: 1.5rem;
+}
+
+.task-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 15px;
+}
+
+.grid-header, .task-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  text-align: center;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.grid-header {
+  font-weight: bold;
+  background-color: #007bff;
+  color: white;
+}
+
+.task-row {
+  background-color: #f0f8ff;
+  transition: transform 0.2s ease;
+}
+
+.task-row:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.task-title {
+  text-align: left;
+  padding-left: 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.task-status.completed {
+  color: green;
+  font-weight: bold;
+  background-color: lightgreen;
+  border-radius: 20px;
+  padding: 5px 10px;
+}
+
+.task-status.not-completed {
+  color: red;
+  font-weight: bold;
+  background-color: rgba(248, 179, 179, 0.758);
+  border-radius: 20px;
+  padding: 5px 10px;
+}
+
+.task-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.action-icon-edit {
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #a6ae06;
+  transition: color 0.2s ease;
+}
+
+.action-icon-edit:hover {
+  color: #aab300;
+}
+
+.action-icon-delete {
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #ff0000;
+  transition: color 0.2s ease;
+}
+
+.action-icon-delete:hover {
+  color: #b30000;
+}
+
+.action-icon-info {
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #0d00ff;
+  transition: color 0.2s ease;
+}
+
+.action-icon-info:hover {
+  color: #0000b3;
+}
+
+.error-message {
+  color: red;
+  text-align: center;
+  font-weight: bold;
+}
