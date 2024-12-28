@@ -21,6 +21,8 @@ const Navbar = () => {
             } catch (error) {
                 console.error('Invalid token', error);  // Handle invalid token
             }
+        } else{
+            navigate('/login');
         }
     }, []);  // Empty dependency array to run this effect only once
 

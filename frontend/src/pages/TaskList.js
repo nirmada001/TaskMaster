@@ -6,6 +6,7 @@ import '../css/taskList.css';
 import '../css/general.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrashAlt, faInfoCircle, faPlusSquare } from '@fortawesome/free-solid-svg-icons';
+import Chatbot from '../components/Chatbot';
 
 const TaskList = () => {
     const [tasks, setTasks] = useState([]);
@@ -89,6 +90,7 @@ const TaskList = () => {
                     !error && <p>No tasks found. Start creating your tasks!</p>
                 )}
             </div>
+            <Chatbot />
         </div>
     );
 };

@@ -1,7 +1,7 @@
 import express from 'express';
 import axios from 'axios';
-import { Task } from '../models/tasksModel.js'; // Import your Task model
-import { authenticate } from '../middleware/authenticate.js'; // Ensure you have the authenticate middleware
+import { authenticate } from '../middleware/authenticate.js';
+import { Task } from '../models/tasksModel.js'; // Import the Task model
 
 const router = express.Router();
 
@@ -29,20 +29,27 @@ router.post('/chat', authenticate, async (req, res) => {
 
         const assistantReply = response.data.choices[0].message.content;
 
-        // If the AI indicates a task is added, extract and save it to the database
-        if (assistantReply.toLowerCase().includes('task added')) {
-            const taskDetails = extractTaskDetails(userInput); // Helper function to extract task details
+        // If the AI indicates a task is added, extract task details
+        if (assistantReply.toLowerCase().includes('added')) {
+            const taskDetails = extractTaskDetails(userInput); // Helper function to extract details
             if (taskDetails) {
-                const newTask = new Task({
-                    title: taskDetails.title,
-                    description: taskDetails.description,
-                    userId: req.user.id, // Use authenticated user's ID
-                    dueDate: taskDetails.dueDate, // Optional if parsed
-                    completed: false,
-                });
+                try {
+                    // Save the task directly using the Task model
+                    const newTask = new Task({
+                        userId: req.user.id, // Authenticated user's ID
+                        title: taskDetails.title,
+                        description: taskDetails.description,
+                        completed: false,
+                    });
 
-                await newTask.save();
-                console.log('Task successfully saved:', newTask);
+                    await newTask.save();
+                    console.log('Task successfully saved:', newTask);
+                } catch (taskError) {
+                    console.error('Error saving task:', taskError);
+                    return res.status(500).send({ message: 'Task creation failed' });
+                }
+            } else {
+                console.log('Could not extract task details from input:', userInput);
             }
         }
 
@@ -53,18 +60,18 @@ router.post('/chat', authenticate, async (req, res) => {
     }
 });
 
-// Helper function to extract task details from userInput.
+// Helper function to extract task details from userInput
 function extractTaskDetails(input) {
     const taskRegex = /add a task to (.+?) (?:by|at|on|before) (.+)/i;
     const match = input.match(taskRegex);
     if (match) {
         return {
             title: match[1].trim(),
-            description: match[1].trim(), // Can differentiate title and description as needed
-            dueDate: new Date(match[2]), // Parse date if possible
+            description: match[1].trim(), // Adjust if you differentiate title and description
+            dueDate: isNaN(Date.parse(match[2])) ? null : new Date(match[2]), // Parse due date
         };
     }
-    return null; // Return null if input doesn't match expected format
+    return null; // Return null if no match found
 }
 
 export default router;
