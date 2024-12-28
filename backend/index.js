@@ -4,16 +4,24 @@ import mongoose from "mongoose";
 import cors from "cors";
 import userRoutes from './routes/userRoutes.js';
 import taskRoutes from './routes/taskRoutes.js';
-
-
+import aiRoutes from './routes/aiRoutes.js';
 import dotenv from 'dotenv'; // Import dotenv
+
 dotenv.config(); // Load environment variables
 
 // Middleware
 const app = express();
 
+// CORS configuration to allow Authorization header
+const corsOptions = {
+  origin: 'http://localhost:3000', // Your frontend URL
+  allowedHeaders: ['Content-Type', 'Authorization'], // Allow Authorization header
+};
+
+app.use(cors(corsOptions));
+
 app.use(express.json());
-app.use(cors());
+
 
 app.get('/', (request, response) => {
     console.log(request)
@@ -21,8 +29,12 @@ app.get('/', (request, response) => {
 });
 
 // Routes
+//user routes
 app.use('/users', userRoutes);
+//task routes
 app.use('/tasks', taskRoutes);
+//ai routes
+app.use('/api/ai', aiRoutes);
 
 //connect to database
 mongoose.connect(mongoDBURL)

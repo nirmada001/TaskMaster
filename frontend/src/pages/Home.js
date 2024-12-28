@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 import '../css/general.css';
+import Chatbot from '../components/Chatbot';
 
 
 const Home = () => {
@@ -10,6 +11,7 @@ const Home = () => {
     <div className="home">
       <Navbar />
       <h1>This is home page</h1>
+      <Chatbot />
     </div>
   );
 };
