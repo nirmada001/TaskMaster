@@ -7,6 +7,7 @@ import '../css/general.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrashAlt, faInfoCircle, faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 import Chatbot from '../components/Chatbot';
+import Footer from '../components/Footer';
 
 const TaskList = () => {
     const [tasks, setTasks] = useState([]);
@@ -77,9 +78,9 @@ const TaskList = () => {
                                         <FontAwesomeIcon icon={faInfoCircle} className="action-icon-info" />
                                     </Link>
                                     <Link to={`/deleteTask/${task._id}`}>
-                                    <FontAwesomeIcon icon={faTrashAlt} className="action-icon-delete" />
+                                        <FontAwesomeIcon icon={faTrashAlt} className="action-icon-delete" />
                                     </Link>
-                                    
+
 
                                 </div>
                             </div>
@@ -91,6 +92,7 @@ const TaskList = () => {
                 )}
             </div>
             <Chatbot />
+            <Footer />
         </div>
     );
 };

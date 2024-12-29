@@ -44,7 +44,7 @@ const Chatbot = () => {
     return (
         <div>
             {/* Chatbot icon to toggle chat window */}
-            <div className={`chatbot-icon ${isChatOpen ? 'open' : ''}`} onClick={toggleChatWindow}>
+            <div className={`chatbot-icon pulse ${isChatOpen ? 'open' : ''}`} onClick={toggleChatWindow}>
                 <span>💬</span>
             </div>
 

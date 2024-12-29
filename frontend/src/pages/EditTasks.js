@@ -6,6 +6,7 @@ import '../css/general.css';
 import '../css/editTasks.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExclamationTriangle, faCheck } from '@fortawesome/free-solid-svg-icons';
+import Footer from '../components/Footer';
 
 const EditTasks = () => {
     const { id } = useParams(); // Use useParams at the top level
@@ -126,6 +127,7 @@ const EditTasks = () => {
                     </form>
                 </div>
             </div>
+            <Footer/>
         </div>
     );
 };

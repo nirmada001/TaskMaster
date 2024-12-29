@@ -1,8 +1,8 @@
 /* Styles for the chatbot */
 .chatbot-icon {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    bottom: 80px;
+    right: 50px;
     background-color: #0078d4;
     color: white;
     border-radius: 50%;
@@ -23,8 +23,8 @@
 
 .chat-window {
     position: fixed;
-    bottom: 80px;
-    right: 20px;
+    bottom: 150px;
+    right: 80px;
     width: 380px;
     background-color: white;
     border-radius: 10px;
@@ -83,8 +83,23 @@ input[type="text"] {
     transition: background-color 0.3s;
     width: 100px;
     margin-left: 70%;
+    margin-top: 40%;
 }
 
 .send-btn:hover {
     background-color: #005a99;
+}
+
+
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 0 10px 3px rgba(46, 154, 231, 0.84);
+    }
+    50% {
+        box-shadow: 0 0 20px 6px rgba(0, 120, 212, 0.8);
+    }
+}
+
+.chatbot-icon.pulse {
+    animation: pulse 1.5s infinite;
 }

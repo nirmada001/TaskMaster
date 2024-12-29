@@ -3,7 +3,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: calc(100vh - 70px); /* Adjust height to account for the navbar */
+    height: 500px; /* Adjust height to account for the navbar */
     padding: 40px 20px; /* More padding for better spacing */
     background-color: #f4f7fc; /* Softer background for better contrast */
     font-family: 'Roboto', sans-serif; /* Modern font */
@@ -20,6 +20,7 @@
     width: 100%;
     text-align: left;
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    margin-left: 100px;
 }
 
 /* Add hover effect for the card */

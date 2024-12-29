@@ -4,6 +4,7 @@ import axios from 'axios';
 import Navbar from '../components/Navbar';
 import '../css/taskDetails.css'; // Link to the new CSS file
 import '../css/general.css';
+import Footer from '../components/Footer';
 
 const TaskDetails = () => {
     const { id } = useParams();
@@ -63,6 +64,7 @@ const TaskDetails = () => {
                     </div>
                 )}
             </div>
+            <Footer/>
         </div>
     );
 };

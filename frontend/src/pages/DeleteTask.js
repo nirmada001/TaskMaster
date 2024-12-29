@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import axios from 'axios';
+import Footer from '../components/Footer';
 
 const DeleteTask = () => {
     const { id } = useParams();
@@ -52,6 +53,7 @@ const DeleteTask = () => {
             {error && <p className="error-message">{error}</p>}
             {successMessage && <p className="success-message">{successMessage}</p>}
         </div>
+        <Footer />
     </div>
   )
 }

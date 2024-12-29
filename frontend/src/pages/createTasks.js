@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExclamationTriangle, faCheck } from '@fortawesome/free-solid-svg-icons';
 import Navbar from '../components/Navbar';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import Footer from '../components/Footer';
 
 const CreateTasks = () => {
     const [title, setTitle] = useState('');
@@ -106,6 +107,7 @@ const CreateTasks = () => {
                     </form>
                 </div>
             </div>
+            <Footer />
         </div>
     );
 };

@@ -4,6 +4,8 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import '../css/general.css';
+import Footer from '../components/Footer';
+import Chatbot from '../components/Chatbot';
 
 const UserPage = () => {
     const [user, setUser] = useState(null);
@@ -60,6 +62,8 @@ const UserPage = () => {
                     </div>
                 )}
             </div>
+            <Chatbot />
+            <Footer />
         </div>
     )
 }
