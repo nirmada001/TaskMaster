@@ -128,4 +128,49 @@ router.get('/:id', async (request, response) =>{
     }
 })
 
+// Route to update user details by ID
+router.put('/:id', async (request, response) => {
+    try {
+        const { id } = request.params;
+        const { name, email } = request.body;
+
+        // Validate required fields
+        if (!name || !email) {
+            return response.status(400).send({ message: 'Name and email are required.' });
+        }
+
+        // Find and update user
+        const updatedUser = await User.findByIdAndUpdate(
+            id,
+            { name, email },
+            { new: true } // Return the updated document
+        );
+
+        if (!updatedUser) {
+            return response.status(404).send({ message: 'User not found.' });
+        }
+
+        return response.status(200).send(updatedUser);
+    } catch (error) {
+        console.error('Error updating user:', error);
+        response.status(500).send({ message: 'Failed to update user.' });
+    }
+});
+
+
+//Route to delete a user by id
+router.delete('/:id', async (request, response) =>{
+    try{
+        const {id} = request.params;
+        const deletedUser = await User.findByIdAndDelete(id);
+        return response.status(200).send(deletedUser);
+    } 
+    catch(error){
+        console.error(error);
+        response.status(500).send({message: error.message});	
+    }
+})
+
+
+
 export default router;
